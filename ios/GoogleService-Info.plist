@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>980439302051-s755kco1uukc63bs1lmjc3j25720v3kd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.980439302051-s755kco1uukc63bs1lmjc3j25720v3kd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>980439302051-bgmsi45p2vftn7lilurimhv88akn8nr1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBXPIdSqdFncKZWgwCTG27dVlpCtpCF3Iw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>980439302051</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.melbeez.ios</string>
+	<key>PROJECT_ID</key>
+	<string>melbeez-fe00d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>melbeez-fe00d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:980439302051:ios:09f8d60a5a4ca5cfdc2416</string>
+</dict>
+</plist>

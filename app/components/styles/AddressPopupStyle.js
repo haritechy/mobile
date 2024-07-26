@@ -1,0 +1,201 @@
+import {Platform, StyleSheet} from 'react-native';
+import {
+  ApplicationStyles,
+  Colors,
+  Fonts,
+  horizontalScale,
+  Metrics,
+  moderateScale,
+  verticalScale,
+} from '../../theme';
+
+export default StyleSheet.create({
+  ...ApplicationStyles.screen,
+  ...ApplicationStyles.form,
+  container: {},
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.transparentBlack,
+  },
+  modalView: {
+    flex: 0.8,
+    width: Metrics.screenWidth * 0.85,
+    backgroundColor: Colors.white,
+    borderRadius: moderateScale(20),
+    padding: moderateScale(10),
+    shadowColor: Colors.shadow,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    paddingHorizontal: moderateScale(30),
+    borderWidth: 0.5,
+    borderColor: Colors.white,
+  },
+  alertIconView: {
+    width: moderateScale(50),
+    height: moderateScale(50),
+    borderRadius: moderateScale(25),
+    backgroundColor: Colors.unfilledRed,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: moderateScale(10),
+  },
+  alertIcon: {
+    width: moderateScale(25),
+    height: moderateScale(25),
+    resizeMode: 'contain',
+  },
+  headerView: {
+    justifyContent: 'space-between',
+    marginVertical: moderateScale(15),
+  },
+  headerText: {
+    fontSize: moderateScale(18),
+    fontFamily: Fonts.type.PoppinsBold,
+    color: Colors.black,
+    marginVertical: moderateScale(15),
+  },
+  descriptionText: {
+    flexWrap: 'wrap',
+    flexShrink: 20,
+    fontSize: moderateScale(12),
+    fontFamily: Fonts.type.PoppinsRegular,
+    color: Colors.linkBlue,
+  },
+  skipText: {
+    fontSize: moderateScale(14),
+    fontFamily: Fonts.type.PoppinsMedium,
+    color: Colors.linkBlue,
+  },
+  termsView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: moderateScale(10),
+  },
+  checkIcon: {
+    width: horizontalScale(20),
+    height: verticalScale(20),
+    resizeMode: 'contain',
+    marginRight: horizontalScale(10),
+    borderColor: Colors.extraLightGrey,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  viewCheckIcon: {
+    width: horizontalScale(20),
+    height: verticalScale(20),
+    resizeMode: 'contain',
+    marginRight: horizontalScale(10),
+    backgroundColor: Colors.inputBorder,
+    borderRadius: 5,
+  },
+  termsText: {
+    fontSize: moderateScale(16),
+    color: Colors.grey,
+    fontFamily: Fonts.type.PoppinsRegular,
+  },
+  buttonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: moderateScale(10),
+  },
+  cancelButton: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: moderateScale(12),
+    padding: moderateScale(10),
+    height: moderateScale(50),
+  },
+  cancelText: {
+    fontSize: moderateScale(14),
+    color: Colors.inputBorder,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+  },
+  deleteButton: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.deleteRed,
+    borderRadius: moderateScale(12),
+    padding: moderateScale(10),
+    height: moderateScale(50),
+  },
+  deleteText: {
+    fontSize: moderateScale(14),
+    color: Colors.deleteRed,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+  },
+  seperator: {
+    height: moderateScale(0.5),
+    backgroundColor: Colors.separatorColor,
+    marginVertical: moderateScale(4),
+  },
+  buttonContainer: {
+    height: verticalScale(60),
+    width: Metrics.screenWidth - horizontalScale(120),
+    backgroundColor: Colors.appThemeColor,
+    alignSelf: 'center',
+    borderRadius: moderateScale(16),
+    fontFamily: Fonts.type.PoppinsRegular,
+    marginVertical: moderateScale(20),
+  },
+  currencyDropDown: {
+    width:
+      Platform.OS === 'android'
+        ? Metrics.screenWidth - horizontalScale(120)
+        : Metrics.screenWidth - horizontalScale(117),
+    borderRadius: moderateScale(16),
+    marginTop: verticalScale(0),
+  },
+  dropDownStyle: {
+    width:
+      Platform.OS === 'android'
+        ? Metrics.screenWidth - horizontalScale(120)
+        : Metrics.screenWidth - horizontalScale(117),
+  },
+  detailTitle: {
+    color: Colors.dustGrey,
+    fontFamily: Fonts.type.PoppinsMedium,
+    marginHorizontal: horizontalScale(8),
+    fontSize: moderateScale(16),
+    alignItems: 'flex-start',
+    marginLeft: horizontalScale(5),
+  },
+  inputStyle: {
+    paddingLeft: horizontalScale(10),
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.PoppinsMedium,
+  },
+  codeText: {
+    fontFamily: Fonts.type.PoppinsRegular,
+    fontSize: Fonts.size.medium,
+    color: Colors.lightGrey,
+    marginLeft: horizontalScale(8),
+  },
+  downIcon: {
+    width: moderateScale(12),
+    height: moderateScale(12),
+    resizeMode: 'contain',
+    position: 'absolute',
+    left: horizontalScale(38),
+  },
+  requiredText: {
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    fontSize: moderateScale(14),
+    color: Colors.red,
+    marginVertical: verticalScale(10),
+  },
+  requiredCurrencyText: {
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    fontSize: moderateScale(14),
+    color: Colors.red,
+    marginTop: verticalScale(15),
+  },
+});

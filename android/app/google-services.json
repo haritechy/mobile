@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "980439302051",
+    "project_id": "melbeez-fe00d",
+    "storage_bucket": "melbeez-fe00d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980439302051:android:ff03faa23ce6e1f1dc2416",
+        "android_client_info": {
+          "package_name": "com.melbeez.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980439302051-bgmsi45p2vftn7lilurimhv88akn8nr1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.melbeez.app",
+            "certificate_hash": "8e99363b4a48f1a2a1a4d30342eb8ea461fac77d"
+          }
+        },
+        {
+          "client_id": "980439302051-dp1vp68m1cpjlto5ql9dmu43r00fr5h2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.melbeez.app",
+            "certificate_hash": "c5b84c9ad791bdd31e2fb9d2dfc5030cdb209723"
+          }
+        },
+        {
+          "client_id": "980439302051-m3h1olfpg07p9ebqv17qlgv1i0lbj76f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.melbeez.app",
+            "certificate_hash": "bf5145bc8c9c9eee886e64a15c9904e4c1b04557"
+          }
+        },
+        {
+          "client_id": "980439302051-k5n94pggigc9ia545u3htkkj87o5hajo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDZmCobU--3_WZrIzkj7ixeN2ZvlQh0fU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980439302051-k5n94pggigc9ia545u3htkkj87o5hajo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "980439302051-924gdf83p48bfclggsoful60l9v7k1a4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.melbeez.app"
+              }
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-3758536231280993~4070589139"
+    }
+  ],
+  "configuration_version": "1"
+}

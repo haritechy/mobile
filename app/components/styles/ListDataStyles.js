@@ -1,0 +1,173 @@
+import {Platform, StyleSheet} from 'react-native';
+import {
+  Colors,
+  Fonts,
+  horizontalScale,
+  Metrics,
+  moderateScale,
+  verticalScale,
+} from '../../theme';
+
+export default StyleSheet.create({
+  container: {flex: 1},
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.transparentBlack,
+  },
+  modalView: {
+    flex: 1,
+    width: Metrics.screenWidth,
+    height: Platform.select({
+      ios: Metrics.screenHeight * 0.75,
+      android: Metrics.screenHeight * 0.45,
+    }),
+    backgroundColor: Colors.themeBackground,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 10,
+    shadowColor: Colors.shadow,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    paddingHorizontal: horizontalScale(10),
+    position: 'absolute',
+    bottom: 0,
+    paddingBottom: Metrics.screenHeight * 0.05,
+  },
+  searchContainer: {
+    borderWidth: 1,
+    backgroundColor: Colors.themeBackground,
+    height: verticalScale(44),
+    marginHorizontal: horizontalScale(20),
+    width: Metrics.screenWidth - 40,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  otherCityContainer: {
+    borderWidth: 1,
+    backgroundColor: Colors.themeBackground,
+    height: verticalScale(44),
+    width: Metrics.screenWidth - 150,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  topHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: horizontalScale(15),
+    marginVertical: verticalScale(5),
+  },
+  labelText: {
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    fontSize: Fonts.size.regular,
+    color: Colors.black,
+    marginVertical: verticalScale(5),
+  },
+  closeIcn: {
+    width: horizontalScale(15),
+    height: verticalScale(15),
+  },
+  inputText: {
+    fontWeight: 'normal',
+    marginLeft: horizontalScale(5),
+    fontFamily: Fonts.type.PoppinsRegular,
+  },
+  emptyContainer: {
+    borderWidth: 0,
+    borderColor: Colors.inputBorder,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.themeBackground,
+    height: Metrics.screenHeight * 0.25,
+  },
+  emptyData: {
+    fontFamily: Fonts.type.PoppinsRegular,
+    color: Colors.black,
+    fontSize: moderateScale(14),
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: verticalScale(55),
+    width: Metrics.screenWidth - 60,
+    paddingHorizontal: horizontalScale(20),
+    zIndex: 1,
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: 15,
+    marginVertical: verticalScale(10),
+  },
+  placeHolderText: {
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    fontSize: Fonts.size.small,
+    color: Colors.placeHolderColor,
+  },
+  selectedText: {
+    fontFamily: Fonts.type.PoppinsMedium,
+    fontSize: Fonts.size.medium,
+    color: Colors.black,
+  },
+  itemView: {
+    padding: 16,
+  },
+  seperator: {
+    height: 1,
+    backgroundColor: Colors.seperatorColor,
+  },
+  textItem: {
+    fontFamily: Fonts.type.PoppinsMedium,
+    fontSize: Fonts.size.regular,
+    color: Colors.black,
+  },
+  downArrow: {
+    width: 15,
+    height: 15,
+    tintColor: Colors.grey,
+  },
+  errorStyle: {
+    marginBottom: 0,
+  },
+  errorBorder: {
+    borderColor: Colors.red,
+  },
+  otherBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  listHeaderView: {
+    paddingHorizontal: 16,
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  addOtherBtn: {
+    backgroundColor: Colors.appThemeColor,
+    height: verticalScale(44),
+    width: Metrics.screenWidth / 4.5,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  otherCityTextInputView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  otherCityTitleText: {
+    fontFamily: Fonts.type.PoppinsMedium,
+    fontSize: Fonts.size.label,
+    color: Colors.black,
+  },
+  addLinkText: {
+    color: Colors.blueText,
+    textDecorationLine: 'underline',
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.PoppinsMedium,
+  },
+  errorText: {
+    color: Colors.red,
+  },
+});

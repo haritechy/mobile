@@ -1,0 +1,8 @@
+{
+  "name": "melbeezapp",
+  "displayName": "melbeezapp",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3758536231280993~4070589139",
+    "ios_app_id": "ca-app-pub-3758536231280993~5786995484"
+  }
+}

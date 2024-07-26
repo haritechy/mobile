@@ -1,0 +1,99 @@
+import {StyleSheet} from 'react-native';
+import {
+  Colors,
+  Fonts,
+  horizontalScale,
+  Metrics,
+  moderateScale,
+} from '../../theme';
+
+export default StyleSheet.create({
+  container: {},
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.transparentBlack,
+  },
+  modalView: {
+    width: Metrics.screenWidth * 0.85,
+    backgroundColor: Colors.white,
+    borderRadius: moderateScale(20),
+    padding: moderateScale(10),
+    shadowColor: Colors.shadow,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    paddingHorizontal: moderateScale(30),
+    borderWidth: 0.5,
+    borderColor: Colors.white,
+    bottom: Metrics.screenHeight * 0.1,
+  },
+  alertIconView: {
+    width: moderateScale(50),
+    height: moderateScale(50),
+    borderRadius: moderateScale(25),
+    backgroundColor: Colors.unfilledRed,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: moderateScale(10),
+  },
+  alertIcon: {
+    width: moderateScale(25),
+    height: moderateScale(25),
+    resizeMode: 'contain',
+  },
+  headerText: {
+    fontSize: moderateScale(22),
+    fontFamily: Fonts.type.PoppinsBold,
+    color: Colors.black,
+    marginVertical: moderateScale(5),
+  },
+  buttonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: moderateScale(10),
+  },
+  cancelButton: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: moderateScale(12),
+    padding: moderateScale(10),
+    height: moderateScale(50),
+  },
+  cancelText: {
+    fontSize: moderateScale(14),
+    color: Colors.inputBorder,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+  },
+  deleteButton: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.deleteRed,
+    backgroundColor: Colors.deleteRed,
+    borderRadius: moderateScale(12),
+    padding: moderateScale(10),
+    height: moderateScale(50),
+  },
+  deleteText: {
+    fontSize: moderateScale(14),
+    color: Colors.white,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+  },
+  textInput: {
+    paddingLeft: horizontalScale(10),
+  },
+  inputContainer: {
+    height: moderateScale(60),
+    borderRadius: moderateScale(16),
+  },
+  errorStyle: {
+    marginHorizontal: moderateScale(30),
+  },
+});

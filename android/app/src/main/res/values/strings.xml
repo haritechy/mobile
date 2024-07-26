@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Melbeez</string>
+    <string name="facebook_app_id">649775120102089</string>
+    <string name="fb_login_protocol_scheme">fb649775120102089</string>
+    <string name="facebook_client_token">c142cd16a3024e97299d6a9cbcc1d0fb</string>
+</resources>

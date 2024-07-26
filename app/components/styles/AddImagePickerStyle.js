@@ -1,0 +1,186 @@
+import {
+  Colors,
+  Fonts,
+  horizontalScale,
+  Metrics,
+  moderateScale,
+  verticalScale,
+} from '../../theme';
+
+import {StyleSheet} from 'react-native';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: Colors.white,
+    alignItems: 'center',
+  },
+  titleText: {
+    fontSize: moderateScale(22),
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingVertical: 20,
+  },
+  textStyle: {
+    padding: 10,
+    color: 'black',
+    textAlign: 'center',
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 5,
+    marginVertical: 10,
+    width: 250,
+  },
+  imageStyle: {
+    width: 200,
+    height: 200,
+    margin: 5,
+  },
+  imgIcon: {
+    height: verticalScale(100),
+    width: horizontalScale(100),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.lightGrey,
+    color: Colors.white,
+    borderRadius: 100,
+  },
+  avatarIconStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    left: horizontalScale(4),
+  },
+  mainViewImgPicker: {
+    alignItems: 'center',
+  },
+  actionSheetContainer: {
+    backgroundColor: 'transparent',
+  },
+  actionSheet: {
+    height: verticalScale(150),
+    borderTopLeftRadius: horizontalScale(30),
+    borderTopRightRadius: horizontalScale(30),
+    marginBottom: verticalScale(10),
+  },
+  actionButton: {
+    height: verticalScale(40),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: verticalScale(5),
+  },
+  actionBtnText: {
+    color: Colors.linkBlue,
+    fontSize: moderateScale(20),
+  },
+  addProductImg: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: moderateScale(200),
+    width: moderateScale(300),
+  },
+  addPictureButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: verticalScale(30),
+    width: '100%',
+    borderRadius: moderateScale(50),
+    margin: moderateScale(10),
+  },
+  addPictureText: {
+    textAlign: 'center',
+    height: verticalScale(30),
+    width: moderateScale(170),
+    color: Colors.linkBlue,
+    fontSize: moderateScale(20),
+  },
+
+  // Camera Picker
+  imagePickerContainer: {
+    width: Metrics.screenWidth - 60,
+    height: Metrics.screenHeight * 0.25,
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    borderStyle: 'dashed',
+    borderRadius: moderateScale(20),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: moderateScale(20),
+  },
+  imagePicker: {
+    width: Metrics.screenWidth - 60,
+    height: Metrics.screenHeight * 0.25,
+    borderRadius: moderateScale(15),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cameraView: {
+    alignItems: 'center',
+  },
+  addPhotoText: {
+    fontSize: moderateScale(14),
+    color: Colors.grey,
+    marginTop: moderateScale(5),
+    fontFamily: Fonts.type.PoppinsMedium,
+  },
+  cameraIcn: {
+    width: moderateScale(25),
+    height: moderateScale(25),
+    resizeMode: 'contain',
+  },
+  separator: {
+    height: verticalScale(1),
+    backgroundColor: Colors.seperatorColor,
+  },
+  multiImagesContainer: {
+    width: Metrics.screenWidth - 60,
+    height: Metrics.screenHeight * 0.15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: Colors.grey,
+    borderStyle: 'dashed',
+    borderWidth: 1,
+    borderRadius: verticalScale(20),
+    marginVertical: verticalScale(20),
+    paddingHorizontal: horizontalScale(10),
+  },
+  imageHorizontalView: {
+    flexDirection: 'row',
+  },
+  multipleImageItm: {
+    width: 55,
+    height: 80,
+    borderRadius: moderateScale(10),
+    marginRight: horizontalScale(5),
+  },
+  cancelView: {
+    position: 'absolute',
+    right: 10,
+    backgroundColor: Colors.white,
+    width: verticalScale(16),
+    height: verticalScale(16),
+    borderWidth: 1,
+    borderRadius: verticalScale(8),
+    borderColor: Colors.extraLightGrey,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cancelIcn: {
+    width: moderateScale(8),
+    height: moderateScale(8),
+    resizeMode: 'contain',
+    tintColor: Colors.black,
+  },
+  addImageView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: horizontalScale(15),
+    borderWidth: 1,
+    borderRadius: verticalScale(10),
+    borderColor: Colors.extraLightGrey,
+    width: 50,
+    height: 80,
+  },
+});
+export default styles;

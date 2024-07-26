@@ -1,0 +1,180 @@
+import {StyleSheet} from 'react-native';
+import {
+  Colors,
+  Fonts,
+  horizontalScale,
+  Metrics,
+  moderateScale,
+  verticalScale,
+} from '../../../theme';
+
+export default StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    paddingHorizontal: moderateScale(10),
+    paddingBottom: moderateScale(10),
+  },
+  detailView: {
+    marginHorizontal: moderateScale(15),
+    marginTop: moderateScale(10),
+  },
+  headerTextStyle: {
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    fontSize: Fonts.size.input,
+  },
+  itemImage: {
+    width: Metrics.screenWidth - 50,
+    height: Metrics.screenHeight * 0.25,
+    borderRadius: moderateScale(10),
+  },
+  expireLeftText: {
+    fontSize: moderateScale(12),
+    color: Colors.black,
+    marginTop: moderateScale(20),
+  },
+  expireText: {
+    color: Colors.red,
+  },
+  progressStyle: {
+    marginTop: moderateScale(5),
+  },
+  itemText: {
+    fontSize: Fonts.size.regular,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    color: Colors.black,
+    marginTop: verticalScale(15),
+  },
+  detailLabel: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.PoppinsRegular,
+    color: Colors.placeHolderColor,
+    textTransform: 'uppercase',
+    marginTop: verticalScale(15),
+  },
+  detailRowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: moderateScale(10),
+    paddingVertical: moderateScale(10),
+    borderWidth: 0.5,
+    borderColor: Colors.transparent,
+    borderBottomColor: Colors.extraLightGrey,
+  },
+  labelText: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+    color: Colors.black,
+    flex: 0.5,
+  },
+  valueText: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.PoppinsRegular,
+    color: Colors.black,
+    flex: 0.5,
+  },
+  transparentBorder: {
+    borderWidth: 0,
+  },
+  partItemText: {
+    fontSize: moderateScale(14),
+    fontWeight: '700',
+    marginTop: moderateScale(15),
+    marginBottom: moderateScale(10),
+  },
+  titleText: {
+    fontSize: moderateScale(12),
+    fontWeight: '600',
+    color: Colors.black,
+  },
+  subtitleText: {
+    fontSize: moderateScale(12),
+    fontWeight: '400',
+    color: Colors.grey,
+    marginTop: moderateScale(2),
+  },
+  warrantyValidView: {
+    marginTop: moderateScale(15),
+  },
+  viewWarrantyCard: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: moderateScale(44),
+    borderWidth: 1,
+    borderColor: Colors.blue,
+    borderRadius: moderateScale(10),
+    marginTop: moderateScale(10),
+  },
+  viewWarrantyText: {
+    fontSize: moderateScale(14),
+    fontWeight: '600',
+    color: Colors.blue,
+  },
+  partsDetailView: {
+    marginHorizontal: moderateScale(15),
+    marginTop: moderateScale(10),
+  },
+  warrantyPartsText: {
+    fontSize: moderateScale(14),
+    fontWeight: '600',
+    color: Colors.grey,
+    textTransform: 'uppercase',
+  },
+
+  mainView: {
+    flex: 0.8,
+  },
+  modalContainer: {
+    flex: 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: Metrics.screenHeight * 0.1,
+    height: Metrics.screenHeight,
+  },
+  warrantyCardContainer: {
+    flex: 1,
+    width: Metrics.screenWidth * 0.85,
+    height: Metrics.screenHeight * 0.8,
+    resizeMode: 'contain',
+    backgroundColor: Colors.transparentBlack,
+    borderRadius: verticalScale(20),
+    paddingVertical: verticalScale(15),
+    shadowColor: Colors.shadow,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    paddingHorizontal: verticalScale(20),
+  },
+  closeView: {
+    position: 'absolute',
+    left: 0,
+    right: 10,
+    top: 5,
+    backgroundColor: Colors.transparent,
+    width: Metrics.screenWidth - 60,
+    padding: verticalScale(10),
+  },
+  closeIcn: {
+    width: horizontalScale(15),
+    height: verticalScale(15),
+    tintColor: Colors.white,
+    alignSelf: 'flex-end',
+  },
+  deleteButton: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.deleteRed,
+    backgroundColor: Colors.deleteRed,
+    borderRadius: moderateScale(12),
+    padding: moderateScale(10),
+    height: moderateScale(50),
+    marginVertical: verticalScale(5),
+  },
+  deleteText: {
+    fontSize: moderateScale(14),
+    color: Colors.white,
+    fontFamily: Fonts.type.PoppinsSemiBold,
+  },
+});
