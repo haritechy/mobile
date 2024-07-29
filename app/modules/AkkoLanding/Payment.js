@@ -1,31 +1,48 @@
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import {
   View,
   Text,
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  Platform, // Import Platform to handle platform-specific styles
+  Platform,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import the icon library
-
-import { Icons } from '../../assets';
-import { CustomButton, CustomNavBar, ScreenContainer } from '../../components';
+import {Icons} from '../../assets';
+import {CustomButton, CustomNavBar, ScreenContainer} from '../../components';
 import colors from '../../theme/Colors';
-import { Colors, moderateScale } from '../../theme';
+import {Colors, moderateScale} from '../../theme';
+import {AppConstants, NavigationRoutes} from '../../constants';
 
-const { width: screenWidth } = Dimensions.get('window');
+const {width: screenWidth} = Dimensions.get('window');
 
-const Payment = ({ navigation }) => {
-  const [selectedPlan, setSelectedPlan] = useState('monthly');
+const Payment = ({route, navigation}) => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  useEffect(() => {
+    if (route.params && route.params.product) {
+      setSelectedPlan(route.params.product);
+    }
+  }, [route.params]);
 
   const handleActions = useCallback(() => {
     navigation.navigate(NavigationRoutes.NotificationScreen);
   }, [navigation]);
 
-  const handlePlanSelection = plan => {
-    setSelectedPlan(plan);
+  const handleSubscribe = () => {
+    // Pass selected plan details to BuyPlan screen
+    navigation.navigate('TermsPayment', {
+      planName:
+        selectedPlan.type === 'monthly' ? 'Monthly Plan' : 'Annual Plan',
+      planAmount:
+        selectedPlan.type === 'monthly'
+          ? `$${selectedPlan.monthlyPrice} / month`
+          : `$${selectedPlan.annualPrice} / year`,
+    });
   };
+
+  if (!selectedPlan) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <ScreenContainer
@@ -34,13 +51,13 @@ const Payment = ({ navigation }) => {
           <CustomNavBar
             title={'Payment Plan'}
             isRightActionVisible={true}
-            isBackVisible={true} // Show back button
+            isBackVisible={true}
             isRightButton={true}
             containerStyle={styles.navContainer}
             listRightIcons={[Icons.notifications]}
             onAction={handleActions}
             isNotificationCount={true}
-            onBackPress={() => navigation.goBack()} // Handle back button press
+            onBackPress={() => navigation.goBack()}
           />
           <View style={styles.mainContainer}>
             <Text style={styles.title}>Choose Your Subscription Plan</Text>
@@ -48,39 +65,49 @@ const Payment = ({ navigation }) => {
               <TouchableOpacity
                 style={[
                   styles.planButton,
-                  selectedPlan === 'monthly' && styles.selectedPlan,
+                  selectedPlan.type === 'monthly' && styles.selectedPlan,
                 ]}
-                onPress={() => handlePlanSelection('monthly')}>
+                onPress={() =>
+                  setSelectedPlan({...selectedPlan, type: 'monthly'})
+                }>
                 <Text
                   style={[
                     styles.planText,
-                    selectedPlan === 'monthly' && styles.selectedPlanText,
+                    selectedPlan.type === 'monthly' && styles.selectedPlanText,
                   ]}>
                   Monthly Plan
                 </Text>
-                <Text style={styles.planPrice}>$9.99 / month</Text>
+                <Text style={styles.planPrice}>
+                  ${selectedPlan.monthlyPrice} / month
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[
                   styles.planButton,
-                  selectedPlan === 'annual' && styles.selectedPlan,
+                  selectedPlan.type === 'annual' && styles.selectedPlan,
                 ]}
-                onPress={() => handlePlanSelection('annual')}>
+                onPress={() =>
+                  setSelectedPlan({...selectedPlan, type: 'annual'})
+                }>
                 <Text
                   style={[
                     styles.planText,
-                    selectedPlan === 'annual' && styles.selectedPlanText,
+                    selectedPlan.type === 'annual' && styles.selectedPlanText,
                   ]}>
                   Annual Plan
                 </Text>
-                <Text style={styles.planPrice}>$99.99 / year</Text>
+                <Text style={styles.planPrice}>
+                  ${selectedPlan.annualPrice} / year
+                </Text>
               </TouchableOpacity>
             </View>
             <CustomButton
               title={`Subscribe (${
-                selectedPlan === 'monthly' ? '$9.99 / month' : '$99.99 / year'
+                selectedPlan.type === 'monthly'
+                  ? `$${selectedPlan.monthlyPrice} / month`
+                  : `$${selectedPlan.annualPrice} / year`
               })`}
-              onPress={() => navigation.navigate('TermsPayment')}
+              onPress={handleSubscribe}
               containerStyle={styles.subscribeButton}
             />
           </View>
@@ -99,7 +126,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(16),
     paddingVertical: moderateScale(20),
     backgroundColor:
-      Platform.OS === 'ios' ? Colors.backgroundWhite : Colors.backgroundGrey, // Different background colors for iOS and Android
+      Platform.OS === 'ios' ? Colors.backgroundWhite : Colors.backgroundGrey,
   },
   title: {
     fontSize: 24,
@@ -117,17 +144,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: moderateScale(15),
     borderRadius: 8,
-    backgroundColor: colors.backgroundGrey, // Grey background for plan options
+    backgroundColor: colors.backgroundGrey,
     marginHorizontal: 10,
     alignItems: 'center',
-    elevation: 3, // Shadow for Android
-    shadowColor: '#000', // Shadow for iOS
-    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 4,
   },
   selectedPlan: {
-    backgroundColor: colors.backgroundBlue, // Highlighted background color
+    backgroundColor: colors.backgroundBlue,
   },
   planText: {
     fontSize: 18,
@@ -144,7 +171,7 @@ const styles = StyleSheet.create({
   },
   subscribeButton: {
     marginTop: 20,
-    backgroundColor: colors.backgroundBlue, // Blue background color for the button
+    backgroundColor: colors.backgroundBlue,
   },
 });
 

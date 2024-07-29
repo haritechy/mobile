@@ -16,6 +16,7 @@ import {
   notificationReducer,
 } from '../reducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import warrantybuyReducer from '../reducer/warrantybuyReducer';
 
 const appReducer = combineReducers({
   userReducer,
@@ -29,6 +30,7 @@ const appReducer = combineReducers({
   warrantyReducer,
   chartReducer,
   notificationReducer,
+  warrantybuyReducer,
 });
 const rootReducer = (state, action) => {
   // when a logout action is dispatched it will reset redux state

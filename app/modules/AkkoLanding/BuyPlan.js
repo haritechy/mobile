@@ -2,16 +2,20 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   TextInput,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
+import Modal from 'react-native-modal';
+import DatePicker from 'react-native-date-picker';
 import {Colors, moderateScale} from '../../theme';
 import {CustomButton, CustomNavBar, ScreenContainer} from '../../components';
 import colors from '../../theme/Colors';
 
-export const BuyPlan = ({navigation}) => {
+export const BuyPlan = ({route, navigation}) => {
+  const {planName, planAmount} = route.params;
+
   const [cardDetails, setCardDetails] = useState({
     name: '',
     number: '',
@@ -19,29 +23,66 @@ export const BuyPlan = ({navigation}) => {
     cvv: '',
   });
 
-  const handleDummyPayment = () => {
-    // Simulate a successful payment process
-    Alert.alert(
-      'Payment Simulated',
-      'This is a dummy payment. No real transaction has occurred.',
-    );
+  const [errors, setErrors] = useState({});
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const [expiryDate, setExpiryDate] = useState(new Date());
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
   };
 
-  // Simple validation
+  const toggleDatePicker = () => {
+    setDatePickerVisible(!isDatePickerVisible);
+  };
+
+  const handleConfirmDate = date => {
+    setExpiryDate(date);
+    setCardDetails({
+      ...cardDetails,
+      expiry: `${date.getMonth() + 1}/${date
+        .getFullYear()
+        .toString()
+        .slice(-2)}`,
+    });
+    toggleDatePicker();
+  };
+
   const validateFields = () => {
     const {name, number, expiry, cvv} = cardDetails;
-    if (!name || !number || !expiry || !cvv) {
-      Alert.alert('Validation Error', 'Please fill in all fields.');
-      return false;
+    let valid = true;
+    let tempErrors = {};
+
+    if (!name) {
+      tempErrors.name = 'Name is required';
+      valid = false;
     }
-    // You can add more sophisticated validation here
-    return true;
+    if (!number) {
+      tempErrors.number = 'Card number is required';
+      valid = false;
+    }
+    if (!expiry) {
+      tempErrors.expiry = 'Expiry date is required';
+      valid = false;
+    }
+    if (!cvv) {
+      tempErrors.cvv = 'CVV is required';
+      valid = false;
+    }
+
+    setErrors(tempErrors);
+    return valid;
   };
 
   const handlePayment = () => {
     if (validateFields()) {
-      handleDummyPayment();
+      toggleModal();
     }
+  };
+
+  const handleGPay = () => {
+    // Implement Google Pay logic here
+    Alert.alert('Google Pay', 'Google Pay option selected.');
   };
 
   return (
@@ -58,7 +99,10 @@ export const BuyPlan = ({navigation}) => {
             isNotificationCount={true}
           />
           <View style={styles.mainContainer}>
-            <Text style={styles.title}>Purchase Warranty</Text>
+            <View style={styles.planDetailsContainer}>
+              <Text style={styles.planName}>{planName}</Text>
+              <Text style={styles.planAmount}>{planAmount}</Text>
+            </View>
 
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Cardholder Name</Text>
@@ -72,6 +116,9 @@ export const BuyPlan = ({navigation}) => {
                 returnKeyType="next"
                 onSubmitEditing={() => this.cardNumberInput.focus()}
               />
+              {errors.name && (
+                <Text style={styles.errorText}>{errors.name}</Text>
+              )}
             </View>
 
             <View style={styles.inputContainer}>
@@ -88,6 +135,9 @@ export const BuyPlan = ({navigation}) => {
                 returnKeyType="next"
                 onSubmitEditing={() => this.expiryInput.focus()}
               />
+              {errors.number && (
+                <Text style={styles.errorText}>{errors.number}</Text>
+              )}
             </View>
 
             <View style={[styles.row, styles.inputContainer]}>
@@ -97,12 +147,21 @@ export const BuyPlan = ({navigation}) => {
                   style={styles.input}
                   placeholder="MM/YY"
                   value={cardDetails.expiry}
-                  onChangeText={text =>
-                    setCardDetails({...cardDetails, expiry: text})
-                  }
-                  ref={input => (this.expiryInput = input)}
-                  returnKeyType="next"
-                  onSubmitEditing={() => this.cvvInput.focus()}
+                  onFocus={toggleDatePicker}
+                />
+                {errors.expiry && (
+                  <Text style={styles.errorText}>{errors.expiry}</Text>
+                )}
+                <DatePicker
+                  modal
+                  open={isDatePickerVisible}
+                  date={expiryDate}
+                  mode="date"
+                  onConfirm={handleConfirmDate}
+                  onCancel={toggleDatePicker}
+                  title="Select Expiry Date"
+                  confirmText="Confirm"
+                  cancelText="Cancel"
                 />
               </View>
               <View style={styles.halfContainer}>
@@ -118,6 +177,9 @@ export const BuyPlan = ({navigation}) => {
                   ref={input => (this.cvvInput = input)}
                   returnKeyType="done"
                 />
+                {errors.cvv && (
+                  <Text style={styles.errorText}>{errors.cvv}</Text>
+                )}
               </View>
             </View>
 
@@ -127,6 +189,37 @@ export const BuyPlan = ({navigation}) => {
               style={styles.subscribeButton}
               textStyle={styles.subscribeButtonText}
             />
+
+            {/* Google Pay Button */}
+            {/* <TouchableOpacity style={styles.gPayButton} onPress={handleGPay}>
+              <Text style={styles.gPayButtonText}>Pay with Google Pay</Text>
+            </TouchableOpacity> */}
+
+            <Modal isVisible={isModalVisible}>
+              <View style={styles.modalContainer}>
+                <Text style={styles.modalTitle}> Congratulations! </Text>
+                <Text style={styles.modalText}>
+                  Welcome to Akko You purchased the {planName} plan to cover{' '}
+                  {planAmount} products. Do you want to add eligible products
+                  from Melbeez to your Akko Coverage?
+                </Text>
+                <View style={styles.modalButtonContainer}>
+                  <CustomButton
+                    title="Skip"
+                    onPress={toggleModal}
+                    style={styles.modalButton}
+                  />
+                  <CustomButton
+                    title="Yes"
+                    onPress={() => {
+                      navigation.navigate('Products');
+                      toggleModal();
+                    }}
+                    style={styles.modalButton}
+                  />
+                </View>
+              </View>
+            </Modal>
           </View>
         </>
       )}
@@ -151,6 +244,19 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textAlign: 'center',
     color: Colors.blackHeaderText,
+  },
+  planDetailsContainer: {
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  planName: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: Colors.black,
+  },
+  planAmount: {
+    fontSize: 16,
+    color: Colors.black,
   },
   inputContainer: {
     width: '100%',
@@ -179,11 +285,56 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 4,
   },
+  errorText: {
+    color: 'red',
+    marginTop: 4,
+  },
   subscribeButton: {
     marginTop: 20,
     backgroundColor: colors.backgroundBlue,
   },
   subscribeButtonText: {
     color: Colors.white, // White text color for the button
+  },
+  gPayButton: {
+    marginTop: 20,
+    backgroundColor: 'black',
+    paddingVertical: 15,
+    borderRadius: 8,
+    width: '100%',
+    alignItems: 'center',
+  },
+  gPayButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  modalContainer: {
+    backgroundColor: 'white',
+    padding: moderateScale(20),
+    borderRadius: moderateScale(8),
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: moderateScale(10),
+  },
+  modalText: {
+    fontSize: 16,
+    marginBottom: moderateScale(20),
+    textAlign: 'center',
+  },
+  modalButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  modalButton: {
+    flex: 1,
+    marginHorizontal: 10,
+  },
+  modalButtonText: {
+    color: Colors.white,
   },
 });

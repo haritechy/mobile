@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -11,13 +11,15 @@ import {
 import WebView from 'react-native-webview';
 
 // LOCAL IMPORTS
-import {CustomNavBar, ScreenContainer} from '../../components';
-import {Colors} from '../../theme';
+import { CustomNavBar, ScreenContainer } from '../../components';
+import { Colors } from '../../theme';
 import styles from '../More/styles/TermsStyles';
 
-const TermsPayment = ({navigation}) => {
+const TermsPayment = ({ route, navigation }) => {
   const [agreed, setAgreed] = useState(false);
   const [accepted, setAccepted] = useState(false);
+
+  const { planName, planAmount } = route.params || {}; // Get plan details from route params
 
   const webUrl = 'https://example.com/terms-and-conditions'; // Replace with your actual URL
 
@@ -28,7 +30,11 @@ const TermsPayment = ({navigation}) => {
   const handleAccept = () => {
     if (agreed) {
       setAccepted(true);
-      navigation.navigate('BuyPlan');
+      // Pass the plan details to the BuyPlan screen
+      navigation.navigate('BuyPlan', {
+        planName,
+        planAmount,
+      });
     } else {
       alert('You must agree to the terms and conditions before accepting.');
     }
@@ -45,7 +51,7 @@ const TermsPayment = ({navigation}) => {
   const RenderTermsServices = () => (
     <WebView
       startInLoadingState
-      source={{uri: webUrl}}
+      source={{ uri: webUrl }}
       style={styles.bottomContainer}
       renderLoading={() => (
         <ActivityIndicator
@@ -95,7 +101,7 @@ const TermsPayment = ({navigation}) => {
               <Text
                 style={[
                   localStyles.buttonText,
-                  {color: agreed ? Colors.black :  'transparent'},
+                  { color: agreed ? Colors.black : 'transparent' },
                 ]}>
                 Accept
               </Text>
